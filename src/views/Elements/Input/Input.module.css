@@ -1,0 +1,41 @@
+.label {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.input {
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 10px 15px;
+  background-color: var(--system-color-darkBlue-primary);
+  color: #ffffff;
+  font-family: inherit;
+  font-size: inherit;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.input:focus {
+  border-color: var(--system-color-darkBlue-secondary);
+  outline: none;
+}
+
+.placeholder {
+  position: absolute;
+  transform: translate(0, 4px) scale(0.9);
+  left: 15px;
+  bottom: 15px;
+  color: var(--system-color-gray);
+  transition: var(--trans-all-3);
+  cursor: text;
+}
+
+.input:not(:placeholder-shown) + .placeholder,
+.input:focus + .placeholder {
+  transform: translate(-3px, -35px) scale(1.2);
+  text-shadow: var(--system-color-gray) 0 0 9px;
+  cursor: pointer;
+}

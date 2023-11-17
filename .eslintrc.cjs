@@ -47,6 +47,13 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-absolute-path': 0,
     'no-console': 1,
+    '@typescript-eslint/no-unused-vars': 'warn',
+    'react/jsx-no-useless-fragment': 0,
+    'react/require-default-props': 0,
+    'import/no-extraneous-dependencies': 0,
+    'react/button-has-type': 0,
+    'react/jsx-props-no-spreading': 0,
+    'jsx-a11y/label-has-associated-control': 0,
   },
   settings: {
     'import/resolver': {
