@@ -29,10 +29,23 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   min-height: 100vh;
   color: #fff;
-  background-color: rgb(25, 11, 46);
+  background-color: #110e15;
 }
 
 .app {
   display: flex;
   height: 100vh;;
+}
+
+/*validate*/
+
+/*border*/
+.border__error {
+  border: 1px solid #a90b0b;
+}
+
+.text__error {
+  font-size: 14px;
+  margin-top: 3px;
+  color: #e74141;
 }

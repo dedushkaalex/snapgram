@@ -14,3 +14,9 @@
   object-fit: cover;
   background-repeat: no-repeat;
 }
+
+@media (width <= 1280px) {
+  .content__bg {
+    display: none;
+  }
+}

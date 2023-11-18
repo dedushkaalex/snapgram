@@ -20,14 +20,18 @@ export const Input: FC<InputProps> = ({
   value,
 }) => {
   return (
-    <label className={styles.label}>
-      <input
-        type={type}
-        className={cn(styles.input, className)}
-        autoComplete="off"
-        placeholder=""
-      />
-      <span className={styles.placeholder}>{placeholder}</span>
-    </label>
+    <div>
+      <label className={styles.label}>
+        <input
+          type={type}
+          className={cn(styles.input, className)}
+          autoComplete="off"
+          placeholder=""
+          value={value}
+          onChange={onChange}
+        />
+        <span className={cn(styles.placeholder)}>{placeholder}</span>
+      </label>
+    </div>
   );
 };

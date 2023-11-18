@@ -25,7 +25,7 @@
 
 .placeholder {
   position: absolute;
-  transform: translate(0, 4px) scale(0.9);
+  transform: translate(0, 4px) scale(1);
   left: 15px;
   bottom: 15px;
   color: var(--system-color-gray);
@@ -35,7 +35,7 @@
 
 .input:not(:placeholder-shown) + .placeholder,
 .input:focus + .placeholder {
-  transform: translate(-3px, -35px) scale(1.2);
+  transform: translate(-10px, -25px) scale(0.75);
   text-shadow: var(--system-color-gray) 0 0 9px;
   cursor: pointer;
 }
