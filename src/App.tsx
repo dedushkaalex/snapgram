@@ -5,6 +5,7 @@ import { SignInForm } from '_auth/forms/SignInForm';
 import { SignUpForm } from '_auth/forms/SignUpForm';
 import { RootLayout } from '_root/RootLayout';
 import { Home } from '_root/pages';
+import { Toast } from 'views/Elements/Toast/Toast';
 
 const router = createBrowserRouter([
   {

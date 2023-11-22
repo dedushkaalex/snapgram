@@ -1,10 +1,15 @@
+import { createPortal } from 'react-dom';
 import { Controller, useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 
 import cn from 'classnames';
+import { createUserAccount } from 'lib/appwrite/api';
 import { SignupValidation } from 'lib/validation';
 import { Form } from 'views/Components/Form';
 import { Button } from 'views/Elements/Button/Button';
 import { Input } from 'views/Elements/Input/Input';
+import { Loader } from 'views/Elements/Loader';
+import { Toast } from 'views/Elements/Toast/Toast';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -18,6 +23,7 @@ type FormValues = {
 };
 
 export const SignUpForm = () => {
+  const isLoading = false;
   const {
     handleSubmit,
     control,
@@ -32,8 +38,19 @@ export const SignUpForm = () => {
       password: '',
     },
   });
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const onSubmit = (data: any) => console.log(data);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, consistent-return
+  const onSubmit = async (data: FormValues) => {
+    const { email, name, password, username } = data;
+    const newUser = await createUserAccount({
+      email,
+      name,
+      password,
+      username,
+    });
+    if (newUser) {
+      return 'asd';
+    }
+  };
 
   return (
     <div className={styles.form__container}>
@@ -113,8 +130,20 @@ export const SignUpForm = () => {
           )}
         />
 
-        <Button type="submit">Sign Up</Button>
+        <Button type="submit">
+          {isLoading ? (
+            <div className={styles.loader__wrapper}>
+              <Loader /> Loading...
+            </div>
+          ) : (
+            'Sign Up'
+          )}
+        </Button>
       </Form>
+      <p className={styles.already__account}>
+        <span>Already have an account?</span>
+        <Link to="/sign-in">Log in </Link>
+      </p>
     </div>
   );
 };

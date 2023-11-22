@@ -54,6 +54,8 @@ module.exports = {
     'react/button-has-type': 0,
     'react/jsx-props-no-spreading': 0,
     'jsx-a11y/label-has-associated-control': 0,
+    '@typescript-eslint/no-use-before-define': 0,
+    'no-promise-executor-return': 0,
   },
   settings: {
     'import/resolver': {

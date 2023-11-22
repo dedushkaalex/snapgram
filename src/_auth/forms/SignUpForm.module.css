@@ -30,11 +30,36 @@
 .error__notify {
   margin: 2px 0 25px 0;
   font-size: 14px;
-  color: #d43737;
-  text-shadow: 0 0 8px #d43737;
+  color: var(--system-color-red);
+  text-shadow: 0 0 8px var(--system-color-red);
 }
 
-.invalid__field, 
+.invalid__field,
 .invalid__field:focus {
-  border: 1px solid #d43737;
+  border: 1px solid var(--system-color-red);
+}
+
+.already__account {
+  margin-top: 15px;
+}
+
+.already__account a {
+  text-decoration: none;
+  color: var(--system-color-violet);
+  transition: var(--trans-all-3);
+}
+
+.already__account a:hover {
+  text-shadow: 0px 0px 12px var(--system-color-violet) ;
+}
+
+.already__account span {
+  margin-right: 10px;
+}
+
+.loader__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }

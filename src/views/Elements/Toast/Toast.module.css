@@ -1,0 +1,117 @@
+.toast {
+  position: fixed;
+  z-index: 9999;
+  bottom: 15px;
+  right: 15px;
+  background-color: #000;
+  padding: 24px 32px 24px 24px;
+  border-radius: var(--system-radius-lg);
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  user-select: none;
+  touch-action: none;
+  animation-name: show;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  animation-fill-mode: both;
+}
+
+.destructive__type {
+  background-color: #7f1d1d;
+}
+
+.hide__toast {
+  animation-name: enter;
+  animation-duration: 0.3s;
+  animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+  animation-fill-mode: both;
+}
+
+.text {
+  width: 74%;
+}
+.title {
+  font-weight: bold;
+  color: #fff;
+}
+
+.description {
+  color: #f2f1f1;
+  margin-top: 3px;
+}
+
+.close {
+  position: absolute;
+  background-color: transparent;
+  top: 5px;
+  right: 8px;
+}
+
+.toast button {
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.toast .main__button {
+  border: 1px solid #343434;
+  border-radius: var(--system-radius-lg);
+  padding: 7px 8px;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 0.2px;
+  transition: var(--trans-all-3);
+  cursor: pointer;
+  outline: none;
+}
+
+.toast .main__button:hover {
+  border: 1px solid transparent;
+}
+
+.close {
+  color: transparent;
+  transition: var(--trans-all-3);
+  cursor: pointer;
+}
+
+.toast:hover>.close {
+  color: #aaaaaa;
+}
+
+.toast:hover>.close:hover {
+  color: #fff;
+}
+
+@keyframes enter {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media screen and (width <= 767px) {
+  .toast {
+    width: calc(100% - 20px);
+    left: 10px;
+    bottom: 5px;
+    transform: translateX(-50%);
+  }
+}
