@@ -11,6 +11,7 @@ module.exports = {
     'plugin:react/recommended',
     'plugin:prettier/recommended',
     'prettier',
+    'plugin:@tanstack/eslint-plugin-query/recommended',
   ],
   overrides: [
     {
@@ -31,7 +32,7 @@ module.exports = {
     sourceType: 'module',
     project: './tsconfig.json',
   },
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', '@tanstack/query'],
   rules: {
     'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 0,
@@ -56,6 +57,10 @@ module.exports = {
     'jsx-a11y/label-has-associated-control': 0,
     '@typescript-eslint/no-use-before-define': 0,
     'no-promise-executor-return': 0,
+    '@tanstack/query/exhaustive-deps': 'error',
+    '@tanstack/query/no-rest-destructuring': 'warn',
+    '@tanstack/query/stable-query-client': 'error',
+    '@typescript-eslint/ban-types': 0,
   },
   settings: {
     'import/resolver': {

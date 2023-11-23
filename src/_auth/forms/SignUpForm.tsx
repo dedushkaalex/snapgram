@@ -3,7 +3,8 @@ import { Controller, useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
 import cn from 'classnames';
-import { createUserAccount } from 'lib/appwrite/api';
+import { signInAccount } from 'lib/appwrite/api';
+import { useCreateUserAccount, useSignInAccount } from 'lib/react-query/queriesAndMutations';
 import { SignupValidation } from 'lib/validation';
 import { Form } from 'views/Components/Form';
 import { Button } from 'views/Elements/Button/Button';
@@ -23,7 +24,13 @@ type FormValues = {
 };
 
 export const SignUpForm = () => {
-  const isLoading = false;
+  const {
+    mutateAsync: createUserAccount,
+    // isLoading: isCreatingUser,
+    isError: createUserError,
+  } = useCreateUserAccount();
+  // const { mutateAsync: signInAccount, isLoading: isSigningUser } = useSignInAccount();
+
   const {
     handleSubmit,
     control,
@@ -47,8 +54,13 @@ export const SignUpForm = () => {
       password,
       username,
     });
-    if (newUser) {
-      return 'asd';
+    if (createUserError) {
+      return <Toast title="we" />;
+    }
+
+    const session = await signInAccount({ email, password });
+    if (!session) {
+      console.log('ошибка');
     }
   };
 
@@ -131,7 +143,7 @@ export const SignUpForm = () => {
         />
 
         <Button type="submit">
-          {isLoading ? (
+          {false ? (
             <div className={styles.loader__wrapper}>
               <Loader /> Loading...
             </div>
