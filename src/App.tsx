@@ -5,11 +5,16 @@ import { SignInForm } from '_auth/forms/SignInForm';
 import { SignUpForm } from '_auth/forms/SignUpForm';
 import { RootLayout } from '_root/RootLayout';
 import { Home } from '_root/pages';
+import { AuthContextProvider } from 'context/AuthContext';
 import { Toast } from 'views/Elements/Toast/Toast';
 
 const router = createBrowserRouter([
   {
-    element: <AuthLayout />,
+    element: (
+      <AuthContextProvider>
+        <AuthLayout />
+      </AuthContextProvider>
+    ),
     children: [
       {
         path: '/sign-in',
@@ -23,7 +28,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <RootLayout />,
+    element: (
+      <AuthContextProvider>
+        <RootLayout />
+      </AuthContextProvider>
+    ),
     children: [
       {
         index: true,

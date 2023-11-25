@@ -1,8 +1,9 @@
 import { createPortal } from 'react-dom';
 import { Controller, useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import cn from 'classnames';
+import { useUserContext } from 'context/AuthContext';
 import { signInAccount } from 'lib/appwrite/api';
 import { useCreateUserAccount, useSignInAccount } from 'lib/react-query/queriesAndMutations';
 import { SignupValidation } from 'lib/validation';
@@ -26,13 +27,16 @@ type FormValues = {
 export const SignUpForm = () => {
   const {
     mutateAsync: createUserAccount,
-    // isLoading: isCreatingUser,
+    isPending: isCreatingUser,
     isError: createUserError,
   } = useCreateUserAccount();
   // const { mutateAsync: signInAccount, isLoading: isSigningUser } = useSignInAccount();
+  const { checkAuthUser, isLoading: isUserLoading } = useUserContext();
+  const navigate = useNavigate();
 
   const {
     handleSubmit,
+    reset,
     control,
     formState: { errors },
   } = useForm<FormValues>({
@@ -54,13 +58,25 @@ export const SignUpForm = () => {
       password,
       username,
     });
-    if (createUserError) {
+    if (!newUser) {
       return <Toast title="we" />;
     }
 
     const session = await signInAccount({ email, password });
+
     if (!session) {
       console.log('ошибка');
+    }
+
+    const isLoggedIn = await checkAuthUser();
+
+    console.log(isLoggedIn);
+
+    if (isLoggedIn) {
+      reset();
+      navigate('/');
+    } else {
+      console.log('Toast');
     }
   };
 
@@ -143,7 +159,7 @@ export const SignUpForm = () => {
         />
 
         <Button type="submit">
-          {false ? (
+          {isCreatingUser ? (
             <div className={styles.loader__wrapper}>
               <Loader /> Loading...
             </div>

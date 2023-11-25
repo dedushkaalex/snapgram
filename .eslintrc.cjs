@@ -61,6 +61,8 @@ module.exports = {
     '@tanstack/query/no-rest-destructuring': 'warn',
     '@tanstack/query/stable-query-client': 'error',
     '@typescript-eslint/ban-types': 0,
+    'consistent-return': 0,
+    'react-hooks/exhaustive-deps': 'warn',
   },
   settings: {
     'import/resolver': {

@@ -77,11 +77,11 @@
   cursor: pointer;
 }
 
-.toast:hover>.close {
+.toast:hover > .close {
   color: #aaaaaa;
 }
 
-.toast:hover>.close:hover {
+.toast:hover > .close:hover {
   color: #fff;
 }
 
