@@ -49,7 +49,7 @@ export const SignUpForm = () => {
       password: '',
     },
   });
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any, consistent-return
+
   const onSubmit = async (data: FormValues) => {
     const { email, name, password, username } = data;
     const newUser = await createUserAccount({

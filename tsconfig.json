@@ -23,14 +23,12 @@
     /*aliases*/
     "baseUrl": "src",
     "paths": {
-      "@styles/*": ["styles/*"],
-      "@constants/*": ["constants/*"],
-      "@components/*": ["components/*"],
-      "@core/*": ["core/*"],
-      "@layout/*": ["layout/*"],
-      "@screens/*": ["screens/*"],
-      "@api/*": ["api/*"],
-      "@assets/*": ["assets/*"]
+      "@app/*": ["app/*"],
+      "@pages/*": ["pages/*"],
+      "@widgets/*": ["widgets/*"],
+      "@features/*": ["features/*"],
+      "@entities/*": ["entities/*"],
+      "@shared/*": ["shared/*"]
     }
   },
   "include": ["src", ".eslintrc.cjs"],
