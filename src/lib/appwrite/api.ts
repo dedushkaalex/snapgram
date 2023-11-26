@@ -1,5 +1,6 @@
 import { ID, Query } from 'appwrite';
-import { NewUser } from 'types';
+
+import { NewUser } from '@app/providers/AuthProvider/model/types';
 
 import { account, appwriteConfig, avatars, databases } from './config';
 

@@ -1,19 +1,13 @@
-import { createPortal } from 'react-dom';
 import { Controller, useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 
 import cn from 'classnames';
-import { useUserContext } from 'context/AuthContext';
-import { signInAccount } from 'lib/appwrite/api';
-import { useCreateUserAccount, useSignInAccount } from 'lib/react-query/queriesAndMutations';
-import { SigninValidation, SignupValidation } from 'lib/validation';
-import { Form } from 'views/Components/Form';
-import { Button } from 'views/Elements/Button/Button';
-import { Input } from 'views/Elements/Input/Input';
-import { Loader } from 'views/Elements/Loader';
-import { Toast } from 'views/Elements/Toast/Toast';
+import { useSignInAccount } from 'lib/react-query/queriesAndMutations';
+import { SigninValidation } from 'lib/validation';
 
+import { useUserContext } from '@app/providers/AuthProvider';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Button, Form, Input, Loader, Toast } from '@shared/ui';
 
 import styles from './SignUpForm.module.css';
 

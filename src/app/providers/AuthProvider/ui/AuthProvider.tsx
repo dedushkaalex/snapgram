@@ -1,55 +1,20 @@
-import React, {
-  FC,
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import { FC, PropsWithChildren, useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { getCurrentUser } from 'lib/appwrite/api';
-import { localStorageWrapper } from 'lib/localStorage';
-import { type UserState } from 'types';
 
-type AuthContextType = {
-  user: UserState;
-  isLoading: boolean;
-  isAuthenticated: boolean;
-  setUser: React.Dispatch<React.SetStateAction<UserState>>;
-  setIsAuthenticated: React.Dispatch<React.SetStateAction<boolean>>;
-  checkAuthUser: () => Promise<boolean>;
-};
+import { localStorageWrapper } from '@shared/lib/localStorage';
 
-const InitialUserState: UserState = {
-  id: '',
-  name: '',
-  username: '',
-  email: '',
-  imageUrl: '',
-  bio: '',
-};
+import { AuthContext, InitialUserState } from '../lib/AuthContext';
+import { UserState } from '../model/types';
 
-const AuthState: AuthContextType = {
-  user: InitialUserState,
-  isLoading: false,
-  isAuthenticated: false,
-  setUser: () => {},
-  setIsAuthenticated: () => {},
-  checkAuthUser: async () => false as boolean,
-};
-
-const AuthContext = createContext<AuthContextType>(AuthState);
-
-export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
+export const AuthProvider: FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<UserState>(InitialUserState);
   const [isLoading, setIsLoading] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const navigate = useNavigate();
 
   const checkAuthUser = async () => {
-    console.log(2);
     try {
       setIsLoading(true);
       const currentAccount = await getCurrentUser();
@@ -99,5 +64,3 @@ export const AuthContextProvider: FC<PropsWithChildren> = ({ children }) => {
   );
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
-
-export const useUserContext = () => useContext(AuthContext);

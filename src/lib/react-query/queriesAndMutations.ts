@@ -1,6 +1,6 @@
 import { createUserAccount, signInAccount } from 'lib/appwrite/api';
-import { NewUser } from 'types';
 
+import { NewUser } from '@app/providers/AuthProvider/model/types';
 import { useInfiniteQuery, useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 export const useCreateUserAccount = () => {

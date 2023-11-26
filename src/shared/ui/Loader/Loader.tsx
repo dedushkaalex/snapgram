@@ -1,10 +1,6 @@
-import { FC } from 'react';
-
 import styles from './Loader.module.css';
 
-interface LoaderProps {}
-
-export const Loader: FC<LoaderProps> = () => {
+export const Loader = () => {
   return (
     <div className={styles.loader}>
       <img
