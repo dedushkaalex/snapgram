@@ -1,11 +1,11 @@
 import { RouteObject } from 'react-router-dom';
 
-import { AuthLayout } from '_auth/AuthLayout';
 import { SignInForm } from '_auth/forms/SignInForm';
 import { SignUpForm } from '_auth/forms/SignUpForm';
 import { RootLayout } from '_root/RootLayout';
 import { Home } from '_root/pages';
 
+import { AuthLayout } from '@app/layout/SignInUpLayout/ui/AuthLayout';
 import { AuthProvider } from '@app/providers/AuthProvider';
 
 export const enum AppRoutes {

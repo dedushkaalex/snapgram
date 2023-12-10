@@ -63,6 +63,7 @@ module.exports = {
     '@typescript-eslint/ban-types': 0,
     'consistent-return': 0,
     'react-hooks/exhaustive-deps': 'warn',
+    'no-param-reassign': 0,
   },
   settings: {
     'import/resolver': {
